@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Splash from './pages/Splash';
+import SignUp from './pages/SignUp'
+import EmailVerification from './pages/EmailVerification';
+import EmailVerified from './pages/EmailVerified';
+import ForgotPassword from './pages/ForgotPassword';
+import EditProfile from './pages/EditProfile';
+import Settings from './pages/Settings';
+import HomePage from './pages/HomePage';
+import AddContacts from './pages/AddContacts';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <main className="background">
+        <Routes>
+          <Route path='/' element={<Splash />} />      
+          <Route path='/sign-up' element={<SignUp />} />      
+          <Route path='/email-verification' element={<EmailVerification />} />      
+          <Route path='/email-verified' element={<EmailVerified />} />      
+          <Route path='/forgot-password' element={<ForgotPassword />} />      
+          <Route path='/edit-profile' element={<EditProfile />} />      
+          <Route path='/settings' element={<Settings />} />      
+          <Route path='/home-page' element={<HomePage />} />      
+          <Route path='/add-contact' element={<AddContacts />} />      
+        </Routes>  
+      </main>
+    </Router>
   );
 }
 

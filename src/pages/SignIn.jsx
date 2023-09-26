@@ -43,7 +43,7 @@ function SignIn({userInfo, setUserInfo}) {
         redirect: 'follow'
         };
 
-        fetch("http://ai4fs.com.ng/geolocation/api/login", requestOptions)
+        fetch("https://ai4fs.com.ng/geolocation/api/login", requestOptions)
         .then(response => response.json())
         .then(result => {
             console.log(result);

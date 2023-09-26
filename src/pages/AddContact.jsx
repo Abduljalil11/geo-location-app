@@ -27,7 +27,7 @@ function AddContact({userInfo, setUserInfo}) {
 
         var forminfo = new FormData();
         forminfo.append("name", applicationData.name);
-        forminfo.append("phone", applicationData.password);
+        forminfo.append("phone", applicationData.phone);
 
         var requestOptions = {
         method: 'POST',

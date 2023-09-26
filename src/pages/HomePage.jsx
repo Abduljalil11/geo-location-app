@@ -47,7 +47,7 @@ function HomePage({userInfo, emergency}) {
     <div className="pages homePage">
         {userInfo === undefined? <Link className="homepageSignup" to="/sign-in">SIGN IN</Link> : <p className="homepageSignup">Welcome, User!</p>}
         <div className="leaflet">
-          <MapContainer style={{height: "100%", width: "100%"}} center={[userLocation.lat,userLocation.long]} zoom={13} scrollWheelZoom={false}>
+          <MapContainer key={JSON.stringify([userLocation.lat, userLocation.long])} style={{height: "100%", width: "100%"}} center={[userLocation.lat,userLocation.long]} zoom={13} scrollWheelZoom={false}>
             <TileLayer 
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url='https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png'

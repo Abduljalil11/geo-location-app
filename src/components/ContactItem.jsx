@@ -1,12 +1,12 @@
 
 
-function Contact() {
+function ContactItem({ContactInfo}) {
   return (
     <div className='contact'>
         <img className='smallMaleUser' src="./assets/images/Small Male User.svg" alt="" />
-        <p className='userName'>Abdul Azeez Olajide</p>
+        <p className='userName'>{ContactInfo.name}</p>
     </div>
   )
 }
 
-export default Contact
+export default ContactItem

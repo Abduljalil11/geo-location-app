@@ -1,18 +1,24 @@
-import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header"
 
-function SignUp() {
+function SignIn({userInfo, setUserInfo}) {
+    const navigate = useNavigate();
     const [formdata, setFormdata] = useState({
         password: "",
-        email: "",
-        phone: ""
+        email: ""
     })
 
     const [errorMessage, setErrorMessage] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [hidden, setHidden] = useState(true);
+    const [loading, setLoading] = useState(false)
+    const [hidden, setHidden] = useState(true)
     const [status, setStatus] = useState(false)
+
+    useEffect(() => {
+        if(status){
+            setTimeout(() => navigate("/home-page"), 1000)   
+        }
+    },[status])
 
     const handleChange = e => {
         const {value, name} = e.target
@@ -29,7 +35,6 @@ function SignUp() {
         var forminfo = new FormData();
         forminfo.append("password", applicationData.password);
         forminfo.append("email", applicationData.email);
-        forminfo.append("phone", applicationData.phone);
 
         var requestOptions = {
         method: 'POST',
@@ -38,15 +43,16 @@ function SignUp() {
         redirect: 'follow'
         };
 
-        fetch("http://ai4fs.com.ng/geolocation/api/register", requestOptions)
+        fetch("http://ai4fs.com.ng/geolocation/api/login", requestOptions)
         .then(response => response.json())
         .then(result => {
             console.log(result);
             setLoading(false);
             setStatus(result.status);
             setErrorMessage(result.message);
+            setUserInfo(result.data);
         })
-        .catch(error => console.log('error', error));
+        .catch(error => {console.log('error', error)});
     }
 
     const handleClick = (e) => {
@@ -55,16 +61,16 @@ function SignUp() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        submitForm(formdata);
-        setErrorMessage("");
-        setLoading(true);
-        console.log(formdata);
+        submitForm(formdata)
+        setErrorMessage("")
+        setLoading(true)
+        console.log(formdata)
     }
 
   return (
     <div className="pages">
         <Header/>
-        <h2>Create New Account</h2>
+        <h2>Sign In</h2>
         <form onSubmit={handleSubmit}>
             <div>
                 <div className="label">
@@ -72,13 +78,6 @@ function SignUp() {
                     <label htmlFor="email">Email</label>
                 </div>
                 <input onChange={handleChange} className="text--input" type="email" id="email" name="email" placeholder="Enter your email" value={formdata.email}/>
-            </div>
-            <div>
-                <div className="label">
-                    <img src="./assets/images/Person.svg" alt="" />
-                    <label htmlFor="phone">Phone Number</label>
-                </div>
-                <input onChange={handleChange} className="text--input" type="text" id="phone" name="phone" placeholder="Enter your phone number" value={formdata.phone}/>
             </div>
             <div>
                 <div className="label">
@@ -90,13 +89,13 @@ function SignUp() {
             </div>
             <p className={status? "success" : "error"} >{errorMessage}</p>
             <button className="sign-up">
-                SIGN UP
+                {loading? "loading..." : "SIGN IN"}
                 <img src="./assets/images/Chevron Right.svg" alt="" className="chevronRight"/>
             </button>
         </form>
-        <Link to="/sign-in">Have an account? Sign In</Link>
+        <Link to="/sign-up">Do not have an account? Sign Up</Link>
     </div>
   )
 }
 
-export default SignUp
+export default SignIn

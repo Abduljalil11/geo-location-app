@@ -38,7 +38,7 @@ function SignUp() {
         redirect: 'follow'
         };
 
-        fetch("http://ai4fs.com.ng/geolocation/api/register", requestOptions)
+        fetch("https://ai4fs.com.ng/geolocation/api/register", requestOptions)
         .then(response => response.json())
         .then(result => {
             console.log(result);

@@ -36,7 +36,7 @@ function AddContact({userInfo, setUserInfo}) {
         redirect: 'follow',
         };
 
-        fetch("http://ai4fs.com.ng/geolocation/api/add_contact", requestOptions)
+        fetch("https://ai4fs.com.ng/geolocation/api/add_contact", requestOptions)
         .then(response => response.json())
         .then(result => {
             console.log(result);

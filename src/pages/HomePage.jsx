@@ -16,6 +16,13 @@ function HomePage({userInfo, emergency}) {
             <Marker position={[26.209080,-80.112100]}>
               <Popup>user location</Popup>
             </Marker>
+            {emergency.map((e) => {
+              return (
+                <Marker key={e.id} position={[e.latitude,e.longitude]}>
+                  <Popup>{e.type}</Popup>
+                </Marker>
+              )
+            })}
           </MapContainer>
         </div>
         <footer>
@@ -27,4 +34,4 @@ function HomePage({userInfo, emergency}) {
   )
 }
 
-export default HomePage
+export default HomePage 

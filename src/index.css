@@ -424,6 +424,7 @@ footer > a{
   padding-left: 1rem;
   padding-right: 1rem;
   height: 53px;
+  margin: 0;
 }
 
 .userName{

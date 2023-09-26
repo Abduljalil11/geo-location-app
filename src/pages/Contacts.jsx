@@ -22,7 +22,7 @@ function Contacts({userInfo, emergency, setEmergency}) {
   };
 
   const getContacts = () => {
-    fetch("http://ai4fs.com.ng/geolocation/api/view_contact", requestOptions)
+    fetch("https://ai4fs.com.ng/geolocation/api/view_contact", requestOptions)
       .then(response => response.json())
       .then(result => {
         setContacts(result.data.contacts);
@@ -31,7 +31,7 @@ function Contacts({userInfo, emergency, setEmergency}) {
   }
 
   const getEmergency = () => {
-    fetch("http://ai4fs.com.ng/geolocation/api/viewEmergency", requestOptions)
+    fetch("https://ai4fs.com.ng/geolocation/api/viewEmergency", requestOptions)
       .then(response => response.json())
       .then(result => {
         console.log(result);

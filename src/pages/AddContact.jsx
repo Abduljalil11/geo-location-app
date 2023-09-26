@@ -72,7 +72,7 @@ function AddContact({userInfo, setUserInfo}) {
             <div>
                 <div className="label">
                     <img src="./assets/images/Keypad.svg" alt="" />
-                    <label htmlFor="password">Phone</label>
+                    <label htmlFor="phone">Phone</label>
                 </div>
                 <input onChange={handleChange} className="text--input" type="text" id="phone" name="phone" placeholder="Enter contact's phone" value={formdata.phone}/>
             </div>
